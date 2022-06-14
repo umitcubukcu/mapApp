@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>GIS</title>
+  <script src="https://kit.fontawesome.com/125470fc19.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <div class="container">
+    <div class="top-side">
+      <div class="toggle-btn">
+        <i id="layer-toggle" class="fa-solid fa-bars  fa-xl"></i>
+      </div>
+      <div class="download-pdf">
+        <i class="fa-solid fa-angle-down fa-xl"></i>
+      </div>
+    </div>
+    <div class="bottom-side">
+      <div class="boundary">
+        <div class="swicherBox">
+          <span>İlçe sınırı</span>
+          <label class="swich">
+            <input id="toggleswitch" type="checkbox">
+            <span class="roundbutton"></span>
+          </label>
+        </div>
+        <div class="swicherBox">
+          <span>İl sınırı</span>
+          <label class="swich">
+            <input id="toggleswitch" type="checkbox">
+            <span class="roundbutton"></span>
+          </label>
+        </div>
+        <div class="swicherBox">
+          <span>Ülke sınırı</span>
+          <label class="swich">
+            <input id="toggleswitch" type="checkbox">
+            <span class="roundbutton"></span>
+          </label>
+        </div>
+        <div id="mouse-position" class="lat-long"></div>
+      </div>
+    </div>
+
+    <div id="map" class="map"></div>
+  </div>
+  <div class="layers">
+    <h3>KATMANLAR</h3>
+    <div class="search">
+      <input type="text" name="layer search" id="layer-search" placeholder="Katman Listesinde Arama">
+    </div>
+    <div class="layer">
+      <div class="top-layer">
+        <i class="fa-solid fa-mountain-sun fa-xl"></i>
+        <p>DAĞLAR</p>
+        <input type="checkbox">
+      </div>
+      <div class="sub-layers">
+        <div class="sublayer">
+          <img src="#" alt="">
+          <p>Volkanik Dağlar</p>
+          <input type="checkbox">
+        </div>
+        <div class="sublayer">
+          <img src="#" alt="">
+          <p>Kıvrım Dağlar</p>
+          <input type="checkbox">
+        </div>
+        <div class="sublayer">
+          <img src="#" alt="">
+          <p>Kırık Dağlar</p>
+          <input id="ovalar" type="checkbox">
+        </div>
+      </div>
+    </div>
+    <div class="layer">
+      <div class="top-layer">
+        <i class="fa-solid fa-water fa-xl"></i>
+        <p>AKARSULAR</p>
+        <input type="checkbox">
+      </div>
+      <div class="sub-layers">
+        <div class="sublayer">
+          <img src="#" alt="">
+          <p>Açık Havza</p>
+          <input type="checkbox">
+        </div>
+        <div class="sublayer">
+          <img src="#" alt="">
+          <p>Kapalı Havza</p>
+          <input type="checkbox">
+        </div>
+      </div>
+    </div>
+    <div class="layer">
+      <div class="top-layer">
+        <i class="fa-solid fa-hat-cowboy-side fa-xl"></i>
+        <p>PLATOLAR</p>
+        <input type="checkbox">
+      </div>
+      <div class="sub-layers">
+        <div class="sublayer">
+          <img src="#" alt="">
+          <p>Aşınım Platolar</p>
+          <input type="checkbox">
+        </div>
+        <div class="sublayer">
+          <img src="#" alt="">
+          <p>Karstik Platolar</p>
+          <input type="checkbox">
+        </div>
+        <div class="sublayer">
+          <img src="#" alt="">
+          <p>Taban Düzlüğü Platolar</p>
+          <input type="checkbox">
+        </div>
+        <div class="sublayer">
+          <img src="#" alt="">
+          <p>Volkanik Platolar</p>
+          <input type="checkbox">
+        </div>
+      </div>
+    </div>
+    <div class="layer">
+      <div class="top-layer">
+        <i class="fa-solid fa-fire-flame-curved fa-2xl"></i>
+        <p>OVALAR</p>
+        <input type="checkbox">
+      </div>
+      <div class="sub-layers">
+        <div class="sublayer">
+          <img src="#" alt="">
+          <p>Delta Ovalar</p>
+          <input id="ova-1" type="checkbox">
+        </div>
+        <div class="sublayer">
+          <img src="#" alt="">
+          <p>Karstik Ovalar</p>
+          <input id="ova-1" type="checkbox">
+        </div>
+        <div class="sublayer">
+          <img src="#" alt="">
+          <p>Tektonik Ovalar</p>
+          <input id="ova-1" type="checkbox">
+        </div>
+        <div class="sublayer">
+          <img src="#" alt="">
+          <p>Volkanik Ovalar</p>
+          <input id="ova-2" type="checkbox">
+        </div>
+      </div>
+    </div>
+    <div class="layer">
+      <div class="top-layer">
+        <i class="fa-solid fa-water fa-2xl"></i>
+        <p>GÖLLER</p>
+        <input type="checkbox" placeholder="clicked">
+      </div>
+      <div class="sub-layers">
+        <div class="sublayer">
+          <img src="#" alt="">
+          <p>Tektonik Göller</p>
+          <input type="checkbox">
+        </div>
+        <div class="sublayer">
+          <img src="#" alt="">
+          <p>Volkanik Göller</p>
+          <input type="checkbox">
+        </div>
+        <div class="sublayer">
+          <img src="#" alt="">
+          <p>Karstik Göller</p>
+          <input type="checkbox">
+        </div>
+
+        <!-- <div class="sublayer">
+                <img src="#" alt="">
+                <p>Buzul</p>
+                <input type="checkbox">
+            </div>
+            <div class="sublayer">
+                <img src="#" alt="">
+                <p>Alüvyon Set Gölleri</p>
+                <input type="checkbox">
+            </div>
+            <div class="sublayer">
+                <img src="#" alt="">
+                <p>Kıyı Set Gölleri</p>
+                <input type="checkbox">
+            </div>
+            <div class="sublayer">
+                <img src="#" alt="">
+                <p>Heyelan Set Gölleri</p>
+                <input type="checkbox">
+            </div> -->
+      </div>
+    </div>
+    <!-- <div class="layer">
+        <div class="top-layer">
+            <i class="fa-solid fa-volcano fa-2xl"></i>
+            <p>Barajlar</p>
+            <input type="checkbox">
+        </div>
+        <div class="sub-layers">
+            <div class="sublayer">
+                <img src="" alt="">
+                <p>Barajlar</p>
+                <input type="checkbox">
+            </div>
+        </div>
+    </div> -->
+  </div>
+  <div id="basemap-container" class="basemap-container">
+    <div id="selected" class="selected">
+      <div id="0" class="basemap">
+        <img src="./images/basemap-default.png" alt="" width="60px" height="60px">
+        <p>Basemap</p>
+      </div>
+    </div>
+    <div id="other" class="others">
+      <div id="0" class="basemap">
+        <img src="./images/basemap-default.png" alt="" width="60px" height="60px">
+        <p>Basemap</p>
+      </div>
+      <div id="0" class="basemap">
+        <img src="./images/basemap-1.png" alt="" width="60px" height="60px">
+        <p>OSM Standard</p>
+      </div>
+      <div id="1" class="basemap">
+        <img src="./images/basemap-topo.png" alt="" width="60px" height="60px">
+        <p>OSM Topological</p>
+      </div>
+      <div id="2" class="basemap">
+        <img src="./images/basemap-hybrit.png" alt="" width="60px" height="60px">
+        <p>G. Hybrit</p>
+      </div>
+      <div id="3" class="basemap">
+        <img src="./images/basemap-topo.png" alt="" width="60px" height="60px">
+        <p>G. Topological</p>
+      </div>
+      <div id="7" class="basemap">
+        <img src="images/basemap-uydu.png" alt="" width="60px" height="60px">
+        <p>Esri Satellite</p>
+      </div>
+    </div>
+  </div>
+  <script src="./main.js" type="module"></script>
+  <script src="./buttons.js"></script>
+</body>
+
+</html>
